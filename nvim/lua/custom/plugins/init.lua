@@ -14,7 +14,23 @@ return {
       require('nvim-tree').setup {}
     end,
   },
-  { 'akinsho/toggleterm.nvim', version = '*', opts = { open_mapping = '<C-g>', direction = 'horizontal' } },
+  {
+    'akinsho/toggleterm.nvim',
+    version = '*',
+    opts = { open_mapping = '<C-g>', direction = 'horizontal' },
+    config = function()
+      require('toggleterm').setup { open_mapping = '<C-g>', direction = 'horizontal' }
+
+      local Terminal = require('toggleterm.terminal').Terminal
+      local lazygit = Terminal:new { cmd = 'lazygit', hidden = true, direction = 'float' }
+
+      function lazygit_toggle()
+        lazygit:toggle()
+      end
+
+      vim.api.nvim_set_keymap('n', '<leader>g', '<cmd>lua lazygit_toggle()<CR>', { noremap = true, silent = true })
+    end,
+  },
   {
     'akinsho/bufferline.nvim',
     version = '*',
@@ -24,5 +40,4 @@ return {
       require('bufferline').setup()
     end,
   },
-  { 'NeogitOrg/neogit', dependencies = { 'nvim-lua/plenary.nvim' }, config = true },
 }
