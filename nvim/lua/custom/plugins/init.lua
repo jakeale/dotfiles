@@ -21,17 +21,6 @@ return {
       'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
       'MunifTanjim/nui.nvim',
     },
-    config = function()
-      require('neo-tree').setup {
-        follow_current_file = true,
-        filtered_items = {
-          visible = true,
-          show_hidden_count = true,
-          hide_dotfiles = false,
-          hide_gitignore = false,
-        },
-      }
-    end,
   },
   {
     'akinsho/toggleterm.nvim',
@@ -55,7 +44,13 @@ return {
     dependencies = 'nvim-tree/nvim-web-devicons',
     config = function()
       vim.opt.termguicolors = true
-      require('bufferline').setup()
+      require('bufferline').setup {
+        options = {
+          offsets = {
+            { filetype = 'neo-tree' },
+          },
+        },
+      }
     end,
   },
   {
