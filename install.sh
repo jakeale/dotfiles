@@ -1,3 +1,4 @@
 #!/bin/bash
 
-rm -rf ~/.config/nvim && ln -s ~/dotfiles/nvim ~/.config/nvim
+ln -sf ~/dotfiles/nvim ~/.config/nvim
+ln -sf ~/dotfiles/.zshrc ~/.zshrc
