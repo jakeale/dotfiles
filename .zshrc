@@ -17,7 +17,7 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light jeffreytse/zsh-vi-mode
 
-alias ls="ls -la --color"
+alias ls="ls -a --color"
 
 HISTSIZE=1000
 HISTFILE=~/.zsh_history
